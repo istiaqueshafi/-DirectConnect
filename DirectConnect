@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Direct Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1ebe57;
+        }
+        h1 {
+            font-size: 22px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>WhatsApp এ সরাসরি মেসেজ করুন</h1>
+    <input type="text" id="phoneNumber" placeholder="ফোন নাম্বার লিখুন">
+    <button onclick="openWhatsApp()">চ্যাট করুন</button>
+</div>
+
+<script>
+function openWhatsApp() {
+    let number = document.getElementById('phoneNumber').value.trim();
+    number = number.replace(/\D/g, ''); // শুধু ডিজিট রাখবে
+    if(number) {
+        if(number.startsWith('0')) {
+            number = '88' + number; // যদি ০ দিয়ে শুরু হয়, তাহলে বাংলাদেশের কোড বসাবে
+        }
+        window.open(`https://wa.me/${number}`, '_blank');
+    } else {
+        alert("দয়া করে একটি সঠিক ফোন নাম্বার লিখুন!");
+    }
+}
+</script>
+
+</body>
+</html>
